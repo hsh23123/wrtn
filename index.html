@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>에르디아 대륙 | 이세계 세계관</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Pretendard", "Noto Sans KR", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255, 190, 92, 0.16), transparent 34%),
+        linear-gradient(180deg, #0d0a14 0%, #181020 46%, #06050a 100%);
+      color: #f7ecd8;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 18% 28%, rgba(105, 80, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 82% 20%, rgba(255, 76, 76, 0.13), transparent 28%),
+        radial-gradient(circle at 48% 84%, rgba(255, 183, 72, 0.08), transparent 32%);
+      filter: blur(2px);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+      background: rgba(13, 10, 20, 0.76);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 190, 92, 0.18);
+    }
+
+    .logo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      color: #e0b66d;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+      color: #d2c1a4;
+    }
+
+    .nav-links a {
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 8% 80px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 540px;
+      height: 540px;
+      border: 1px solid rgba(224, 182, 109, 0.22);
+      border-radius: 50%;
+      box-shadow: 0 0 100px rgba(224, 182, 109, 0.08);
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.55; }
+      50% { transform: scale(1.06); opacity: 0.9; }
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 940px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 6px 14px;
+      border: 1px solid rgba(224, 182, 109, 0.42);
+      border-radius: 999px;
+      color: #e0b66d;
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 1.05;
+      color: #fff5dc;
+      text-shadow: 0 0 30px rgba(224, 182, 109, 0.22);
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 0 auto 34px;
+      color: #d7c8b0;
+      font-size: 18px;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn-primary {
+      color: #171020;
+      background: linear-gradient(135deg, #f7d58e, #bd8431);
+      box-shadow: 0 12px 36px rgba(224, 182, 109, 0.23);
+    }
+
+    .btn-secondary {
+      color: #f7ecd8;
+      border: 1px solid rgba(247, 236, 216, 0.22);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 92px 8%;
+    }
+
+    .section-header {
+      max-width: 820px;
+      margin-bottom: 42px;
+    }
+
+    .section-header.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-kicker {
+      color: #e0b66d;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 5vw, 52px);
+      color: #fff0cd;
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      color: #bfae91;
+      font-size: 16px;
+    }
+
+    .summary-box {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .lore-card,
+    .stat-card,
+    .faction-card,
+    .character-card,
+    .magic-card,
+    .goal-card {
+      border: 1px solid rgba(224, 182, 109, 0.18);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035));
+      border-radius: 24px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(12px);
+    }
+
+    .lore-card {
+      padding: 34px;
+      min-height: 280px;
+    }
+
+    .lore-card p {
+      color: #d9cbb4;
+      margin-bottom: 16px;
+    }
+
+    .stats {
+      display: grid;
+      gap: 18px;
+    }
+
+    .stat-card {
+      padding: 24px;
+    }
+
+    .stat-number {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 42px;
+      color: #e0b66d;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: #d2c1a4;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .factions-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .characters-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .magic-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .faction-card,
+    .character-card,
+    .magic-card,
+    .goal-card {
+      position: relative;
+      padding: 24px;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .faction-card:hover,
+    .character-card:hover,
+    .magic-card:hover,
+    .goal-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(224, 182, 109, 0.5);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.045));
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      background: rgba(224, 182, 109, 0.13);
+      color: #f7d58e;
+      font-size: 23px;
+      border: 1px solid rgba(224, 182, 109, 0.2);
+    }
+
+    .card-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(224, 182, 109, 0.12);
+      color: #e0b66d;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    h3 {
+      color: #fff5dc;
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      color: #bfae91;
+      font-size: 14px;
+    }
+
+    .character-role {
+      color: #e0b66d;
+      font-size: 13px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .character-meta {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(224, 182, 109, 0.14);
+      color: #958773;
+      font-size: 12px;
+    }
+
+    .character-card {
+      cursor: pointer;
+    }
+
+    .character-card.featured {
+      grid-column: span 2;
+      background:
+        radial-gradient(circle at top right, rgba(224, 182, 109, 0.16), transparent 42%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.04));
+    }
+
+    .character-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(224, 182, 109, 0.18);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(920px, 100%);
+      max-height: 88vh;
+      overflow-y: auto;
+      border-radius: 28px;
+      border: 1px solid rgba(224, 182, 109, 0.32);
+      background:
+        radial-gradient(circle at top right, rgba(224, 182, 109, 0.13), transparent 40%),
+        linear-gradient(180deg, #1b1424, #0c0911);
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.58);
+      position: relative;
+      padding: 28px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(224, 182, 109, 0.3);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      color: #f7ecd8;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .modal-content {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .modal-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 22px;
+      border: 1px solid rgba(224, 182, 109, 0.22);
+    }
+
+    .modal-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(224, 182, 109, 0.13);
+      color: #e0b66d;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .modal-title {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #fff5dc;
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .modal-role {
+      color: #e0b66d;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .modal-desc {
+      color: #d9cbb4;
+      margin-bottom: 20px;
+    }
+
+    .modal-info {
+      display: grid;
+      gap: 12px;
+      color: #bfae91;
+      font-size: 14px;
+    }
+
+    .modal-info div {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(224, 182, 109, 0.12);
+    }
+
+    .modal-info strong {
+      color: #f7d58e;
+    }
+
+    .goal-card {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 36px;
+      text-align: center;
+    }
+
+    .goal-card p {
+      color: #d9cbb4;
+      margin-bottom: 16px;
+    }
+
+    .story-start {
+      position: relative;
+      padding: 70px 8%;
+      text-align: center;
+      background:
+        linear-gradient(rgba(13, 10, 20, 0.56), rgba(13, 10, 20, 0.78)),
+        radial-gradient(circle at center, rgba(224, 182, 109, 0.16), transparent 46%);
+      border-top: 1px solid rgba(224, 182, 109, 0.16);
+      border-bottom: 1px solid rgba(224, 182, 109, 0.16);
+    }
+
+    .story-start p {
+      max-width: 820px;
+      margin: 0 auto 28px;
+      color: #d9cbb4;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 34px 8%;
+      text-align: center;
+      color: #897b67;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1280px) {
+      .factions-grid,
+      .characters-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 980px) {
+      .summary-box,
+      .factions-grid,
+      .characters-grid,
+      .magic-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .modal-content {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-title {
+        font-size: 30px;
+      }
+
+      .navbar {
+        padding: 14px 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 120px 5% 70px;
+      }
+
+      .hero::before {
+        width: 330px;
+        height: 330px;
+      }
+
+      section {
+        padding: 70px 5%;
+      }
+
+      .summary-box,
+      .factions-grid,
+      .characters-grid,
+      .magic-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .character-card.featured {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg"></div>
+
+  <header class="navbar">
+    <a href="#top" class="logo">ERDIA</a>
+    <nav class="nav-links">
+      <a href="#world">세계관</a>
+      <a href="#factions">세력/지역</a>
+      <a href="#characters">등장인물</a>
+      <a href="#magic">마력체계</a>
+      <a href="#start">스토리 시작</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">SWORD · MAGIC · MONSTER · DEMON REALM</span>
+        <h1>에르디아 대륙</h1>
+        <p>
+          검과 마법, 몬스터와 왕국, 마족이 존재하는 전형적인 판타지 세계.
+          인간 왕국과 마왕령, 엘프 숲과 수인 연방, 무법자들의 자유령이 얽힌 대륙에서
+          세계의 선택을 받은 나는 여신이 내려준 치트급 능력을 손에 넣는다.
+        </p>
+        <div class="button-group">
+          <a href="#world" class="btn btn-primary">세계관 보기</a>
+          <a href="#characters" class="btn btn-secondary">등장인물 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="world">
+      <div class="section-header">
+        <div class="section-kicker">World Overview</div>
+        <h2>마력이 모든 힘의 근원이 되는 대륙</h2>
+        <p>
+          에르디아 대륙에는 오래전부터 마력이라는 힘이 존재합니다.
+          마력은 마법뿐 아니라 검술 강화, 신체 강화, 능력 강화에도 사용되며,
+          각 종족과 세력은 저마다 다른 방식으로 마력을 다룹니다.
+        </p>
+      </div>
+
+      <div class="summary-box">
+        <article class="lore-card">
+          <p>
+            세계의 선택을 받아 치트급 능력을 부여받은 당신.
+            치트급 능력으로 동료와 모험을 떠나거나 하렘을 이뤄보세요.
+          </p>
+          <p>
+            치트급능력
+          </p>
+          <p>
+            ▸능력｜최면｜정신에 암시를 새기고 행동을 유도한다
+          </p>
+          <p>
+            ▸능력｜창조｜상상한 모든 아이템을 마력으로 창조한다
+          </p>
+          <p>
+            ▸능력｜능력치 재작성｜모든 능력치를 원하는 방향으로 자유롭게 재설정한다
+          </p>
+          <p>
+            ▸능력｜절대행운｜모든 행동에 유리한 우연과 결과가 따라붙는다
+          </p>
+          <p>
+            이런 치트급 능력으로 여러 세력들과 16명의 등장인물을 즐겨보세요.
+          </p>
+        </article>
+
+        <div class="stats">
+          <article class="stat-card">
+            <div class="stat-number">10</div>
+            <div class="stat-label">주요 세력과 지역</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-number">16</div>
+            <div class="stat-label">주요 등장인물</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">여신의 치트급 능력</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="factions">
+      <div class="section-header center">
+        <div class="section-kicker">Factions & Regions</div>
+        <h2>에르디아의 주요 세력과 지역</h2>
+        <p>왕국, 길드, 마법학원, 마왕령, 수인 연방, 던전까지 모험의 무대가 되는 장소들입니다.</p>
+      </div>
+
+      <div class="grid factions-grid">
+        <article class="faction-card">
+          <div class="card-icon">⚜</div>
+          <span class="card-tag">인간 왕국</span>
+          <h3>아르테리아 왕국</h3>
+          <p class="card-text">처음 떨어지는 인간 왕국. 비교적 평화롭고 기사단의 영향력이 강합니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">🛡</div>
+          <span class="card-tag">의뢰와 모험</span>
+          <h3>모험가 길드</h3>
+          <p class="card-text">모험가들에게 퀘스트를 제공하고 휴식처 역할을 하는 장소. 여러 인연이 시작되는 중심지입니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">✦</div>
+          <span class="card-tag">마법 교육기관</span>
+          <h3>왕립 마법학원</h3>
+          <p class="card-text">마법사들을 양성하는 기관. 링링과 미레아가 이곳 출신이며, 학생들은 종종 길드에서 실전을 경험합니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">☾</div>
+          <span class="card-tag">마족의 땅</span>
+          <h3>마왕령</h3>
+          <p class="card-text">마족들이 살아가는 어두운 땅. 인간 왕국과 적대해왔지만 모든 마족이 악한 것은 아닙니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">◆</div>
+          <span class="card-tag">경제 조직</span>
+          <h3>대륙 상단 연합</h3>
+          <p class="card-text">상인들이 모인 거대한 경제 조직. 돈과 정보가 모이며, 일행에게 자금과 정보를 제공할 수 있습니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">🌳</div>
+          <span class="card-tag">세계수의 숲</span>
+          <h3>엘프 숲</h3>
+          <p class="card-text">세계수를 지키는 엘프들의 영역. 외부인에게 매우 엄격하며 숲 밖의 일에는 큰 관심이 없습니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">🐾</div>
+          <span class="card-tag">수인 연방</span>
+          <h3>루베리아 연방국</h3>
+          <p class="card-text">강아지, 고양이, 토끼, 여우, 늑대, 곰, 사자, 새 수인 등 다양한 수인 부족이 모여 만든 연방국입니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">☠</div>
+          <span class="card-tag">무법지대</span>
+          <h3>그레이반 자유령</h3>
+          <p class="card-text">전쟁, 가난, 누명, 범죄, 추방 등으로 갈 곳을 잃은 사람들이 모인 자유령. 정식 왕국은 아닙니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">🔥</div>
+          <span class="card-tag">화산 던전</span>
+          <h3>용암산</h3>
+          <p class="card-text">마그마슬라임, 와이번, 바실리스크가 사는 위험한 던전. 끝에는 불타는 눈물이 보관되어 있습니다.</p>
+        </article>
+
+        <article class="faction-card">
+          <div class="card-icon">💎</div>
+          <span class="card-tag">수정 던전</span>
+          <h3>수정동굴</h3>
+          <p class="card-text">미노타우로스, 수정용, 맨티코어가 서식하는 던전. 여신의 보석을 맨티코어가 지키고 있다고 전해집니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="characters">
+      <div class="section-header center">
+        <div class="section-kicker">Characters</div>
+        <h2>에르디아의 주요인물</h2>
+        <p>캐릭터 카드를 클릭하면 이미지와 함께 자세한 설명을 확인할 수 있습니다.</p>
+      </div>
+
+      <div class="grid characters-grid">
+        <article class="character-card featured" onclick="openCharacterModal(this)" data-name="루미나" data-tag="여신" data-role="불명 · 여 · 여신" data-desc="자애롭고 장난스러운 신비주의자. 나를 에르디아 대륙으로 보낸 존재이며 치트급 능력을 부여했다. 겉으로는 온화하지만 속내를 전부 드러내지 않는다." data-appearance="긴 금빛 머리, 금빛 눈동자, 하얀 신성 드레스" data-ability="신성마법, 축복, 차원전이, 계시, 치트급 능력 부여" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/A/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/A/0.png" alt="루미나">
+          <span class="card-tag">여신</span>
+          <h3>루미나</h3>
+          <div class="character-role">불명 · 여 · 여신</div>
+          <p class="card-text">나를 에르디아 대륙으로 보낸 존재이며 치트급 능력을 부여한 여신.</p>
+          <div class="character-meta">코드: A</div>
+        </article>
+
+        <article class="character-card featured" onclick="openCharacterModal(this)" data-name="루멜리아" data-tag="마왕" data-role="마왕령 · 여 · 마왕" data-desc="오만하고 냉정하지만 고독한 지배자. 마족들의 왕으로 인간 왕국과 오랫동안 대립해왔다. 모든 마족이 악하지 않다는 걸 보여주는 핵심 인물이며 나에게 흥미를 느낀다." data-appearance="검붉은 장발, 붉은 눈동자, 검은 뿔, 검정과 붉은색이 섞인 마왕 드레스" data-ability="어둠마법, 지배의 마안, 마왕의 권능" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/B/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/B/0.png" alt="루멜리아">
+          <span class="card-tag">마왕</span>
+          <h3>루멜리아</h3>
+          <div class="character-role">마왕령 · 여 · 마왕</div>
+          <p class="card-text">마왕령을 지배하는 고독한 마왕. 이세계로 소환된 나에게 흥미를 느낀다.</p>
+          <div class="character-meta">코드: B</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="메이" data-tag="기사단장/용사" data-role="아르테리아 왕국 · 여 · 22세" data-desc="권위적인 귀족 출신으로 평민을 혐오한다. 아르테리아 왕국의 기사단장이자 용사로 불리는 실력자다." data-appearance="금발 포니테일, 날카로운 푸른 눈, 흰색과 은색 갑옷, 붉은 망토" data-ability="성검술, 마력강화, 빛의 참격, 방어결계, 기사단 지휘" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/C/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/C/0.png" alt="메이">
+          <span class="card-tag">기사단장/용사</span>
+          <h3>메이</h3>
+          <div class="character-role">아르테리아 왕국 · 여 · 22세</div>
+          <p class="card-text">아르테리아 왕국의 기사단장이자 용사로 불리는 실력자.</p>
+          <div class="character-meta">코드: C</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="링링" data-tag="마법학원 학생" data-role="아르테리아 왕국 · 여 · 20세" data-desc="밝고 호기심 많은 사고뭉치. 왕립 마법학원 학생으로 실전 경험을 쌓기 위해 모험가 길드에 자주 온다. 새로운 마법이나 이세계 지식에 관심이 많다." data-appearance="금빛 장발, 푸른색 눈, 짧은 마법학원 로브, 활발한 인상" data-ability="불마법" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/D/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/D/0.png" alt="링링">
+          <span class="card-tag">마법학원 학생</span>
+          <h3>링링</h3>
+          <div class="character-role">아르테리아 왕국 · 여 · 20세</div>
+          <p class="card-text">호기심 많고 활발한 왕립 마법학원 학생.</p>
+          <div class="character-meta">코드: D</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="미레아" data-tag="마법학원 학생" data-role="아르테리아 왕국 · 여 · 20세" data-desc="도도하고 까칠한 천재형. 왕립 마법학원의 우수생으로 자존심이 강하고 독설이 많지만 실력은 확실하다." data-appearance="은빛 장발, 푸른 눈동자, 검은 마법 로브, 차갑고 지적인 인상" data-ability="얼음마법, 얼음검 생성, 빙결마법" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/E/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/E/0.png" alt="미레아">
+          <span class="card-tag">마법학원 학생</span>
+          <h3>미레아</h3>
+          <div class="character-role">아르테리아 왕국 · 여 · 20세</div>
+          <p class="card-text">까칠하고 도도한 왕립 마법학원의 천재 우수생.</p>
+          <div class="character-meta">코드: E</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="이리스" data-tag="암살자" data-role="그레이반 자유령 · 여 · 26세" data-desc="무표정하고 과묵한 그림자형. 그레이반 자유령 출신이지만 현재는 왕국의 비밀 의뢰를 받는 암살자다. 말수는 적지만 임무 수행 능력이 뛰어나다." data-appearance="잿빛 단발머리, 보라색 눈동자, 검은 후드와 암살자 복장, 창백한 피부" data-ability="은신, 단검술, 그림자 이동, 기척 차단" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/F/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/F/0.png" alt="이리스">
+          <span class="card-tag">암살자</span>
+          <h3>이리스</h3>
+          <div class="character-role">그레이반 자유령 · 여 · 26세</div>
+          <p class="card-text">왕국의 비밀 의뢰를 수행하는 과묵한 암살자.</p>
+          <div class="character-meta">코드: F</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="노아" data-tag="용인족" data-role="용암산 · 여 · 531세" data-desc="호쾌하고 단순한 전투광. 용암산에 살던 용인족으로 세상 경험을 위해 모험 중이다." data-appearance="붉은 단발, 황금색 눈, 검은 용뿔과 꼬리, 붉은 드레스" data-ability="화염 브레스, 용인화, 화염마법" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/G/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/G/0.png" alt="노아">
+          <span class="card-tag">용인족</span>
+          <h3>노아</h3>
+          <div class="character-role">용암산 · 여 · 531세</div>
+          <p class="card-text">용암산에 살던 호쾌한 용인족 전투광.</p>
+          <div class="character-meta">코드: G</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="아리스" data-tag="엘프공주" data-role="엘프 숲 · 여 · 287세" data-desc="순수한 숲의 공주. 세계수를 지키는 엘프 왕가의 공주로, 외부 세계가 궁금해 엘프 숲의 규칙 때문에 몰래 숲을 나와 여행 중이다." data-appearance="은녹색 긴 머리, 차분한 녹색 눈동자, 고급스러운 엘프 왕실 드레스, 나뭇잎 장식 왕관" data-ability="궁술, 자연마법" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/H/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/H/0.png" alt="아리스">
+          <span class="card-tag">엘프공주</span>
+          <h3>아리스</h3>
+          <div class="character-role">엘프 숲 · 여 · 287세</div>
+          <p class="card-text">외부 세계가 궁금해 숲을 나온 순수한 엘프 공주.</p>
+          <div class="character-meta">코드: H</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="아리아" data-tag="엘프여왕" data-role="엘프 숲 · 여 · 601세" data-desc="우아하고 엄격한 수호자. 엘프 숲과 세계수를 지키는 여왕. 외부인에게 엄격하지만 숲을 위협하는 존재에게는 누구보다 단호하다." data-appearance="연녹색 긴 머리, 에메랄드빛 눈, 긴 뾰족귀, 흰색 엘프 드레스" data-ability="정령술, 세계수 결계, 세계수를 이용한 대규모 마법" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/I/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/I/0.png" alt="아리아">
+
+          <span class="card-tag">엘프여왕</span>
+          <h3>아리아</h3>
+          <div class="character-role">엘프 숲 · 여 · 601세</div>
+          <p class="card-text">세계수와 엘프 숲을 지키는 엄격한 엘프 여왕.</p>
+          <div class="character-meta">코드: I</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="비올레타" data-tag="상단 대표" data-role="루베리아 연방국 · 여 · 311세" data-desc="능글맞고 계산적인 여우수인 상인. 루베리아 출신의 여우수인으로 대륙 상단 연합의 대표다. 돈과 정보를 다루는 데 능하다." data-appearance="짙은 보라색 장발, 보라색 여우귀와 풍성한 꼬리, 자주색 눈동자, 보라색 정장 드레스와 금장식" data-ability="교섭술, 정보수집, 마도구 감정, 환혹의 인향, 보석마법" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/J/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/J/0.png" alt="비올레타">
+          <span class="card-tag">상단 대표</span>
+          <h3>비올레타</h3>
+          <div class="character-role">루베리아 연방국 · 여 · 311세</div>
+          <p class="card-text">돈과 정보를 다루는 능글맞은 여우수인 상단 대표.</p>
+          <div class="character-meta">코드: J</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="카린" data-tag="인랑족 전사" data-role="마왕령 · 여 · 23세" data-desc="과묵하고 충성심 강한 추격자. 마왕군 소속 인랑족 전사로 야간전과 추적에 강하며, 한 번 표적으로 삼은 상대는 쉽게 놓치지 않는다." data-appearance="회흑색 장발, 붉은 눈동자, 회색 늑대귀와 꼬리, 검정과 붉은색 전투복, 날카로운 송곳니" data-ability="인랑화, 초감각, 월광가속, 혈아, 광폭화 마법" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/K/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/K/0.png" alt="카린">
+          <span class="card-tag">인랑족 전사</span>
+          <h3>카린</h3>
+          <div class="character-role">마왕령 · 여 · 23세</div>
+          <p class="card-text">야간전과 추적에 강한 마왕군 소속 인랑족 전사.</p>
+          <div class="character-meta">코드: K</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="코코" data-tag="길드 접수원" data-role="루베리아 연방국 · 여 · 25세" data-desc="밝고 친절하고 순종적인 길드 마스코트. 모험가 길드의 접수원으로 신입 모험가를 잘 챙긴다. 실수는 조금 있지만 기억력이 좋고 사람을 잘 따른다." data-appearance="밝은 갈색 단발머리, 폭신한 강아지귀와 짧은 꼬리, 꿀색 눈동자, 흰 블라우스와 갈색 조끼의 접수원복" data-ability="전투능력 전무" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/L/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/L/0.png" alt="코코">
+          <span class="card-tag">길드 접수원</span>
+          <h3>코코</h3>
+          <div class="character-role">루베리아 연방국 · 여 · 25세</div>
+          <p class="card-text">신입 모험가를 잘 챙기는 강아지수인 길드 접수원.</p>
+          <div class="character-meta">코드: L</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="벨라" data-tag="길드마스터" data-role="루베리아 연방국 · 여 · 29세" data-desc="온화하지만 화가 나면 무서운 실력자. 전직 S급 모험가였던 토끼수인 길드마스터. 부드럽게 웃지만 길드의 질서를 어지럽히는 자에게는 엄격하다." data-appearance="긴 은발, 커다란 흰 토끼귀, 분홍빛 눈동자, 흰 셔츠와 검은 코르셋 조끼, 긴 코트" data-ability="초고속 발차기, 회피술, 신체강화" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/M/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/M/0.png" alt="벨라">
+          <span class="card-tag">길드마스터</span>
+          <h3>벨라</h3>
+          <div class="character-role">루베리아 연방국 · 여 · 29세</div>
+          <p class="card-text">전직 S급 모험가였던 토끼수인 길드마스터.</p>
+          <div class="character-meta">코드: M</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="리아" data-tag="모험가" data-role="그레이반 자유령 · 여 · 24세" data-desc="활발하고 승부욕 강한 권투사. 그레이반 출신의 인간 모험가로 거칠게 살아왔지만 의리가 강하고, 카샤와 함께 의뢰를 수행한다." data-appearance="긴 분홍 트윈테일 머리, 녹색 눈동자, 건강한 피부" data-ability="마력 권투, 충격파 펀치, 빠른 스텝" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/N/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/N/0.png" alt="리아">
+          <span class="card-tag">모험가</span>
+          <h3>리아</h3>
+          <div class="character-role">그레이반 자유령 · 여 · 24세</div>
+          <p class="card-text">승부욕 강하고 의리 있는 그레이반 출신 권투사.</p>
+          <div class="character-meta">코드: N</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="카샤" data-tag="모험가" data-role="그레이반 자유령 · 남 · 24세" data-desc="능글맞고 비열한 생존형 모험가. 그레이반 자유령 출신의 모험가로 리아와 함께 다니며 거친 환경에서 살아남는 법을 잘 안다. 겉으로는 가볍지만 중요한 순간에는 믿음직하다." data-appearance="짙은 갈색 머리, 파란 눈, 낡은 옷과 단검 장비, 가벼운 미소" data-ability="단검술, 함정 설치, 생존술, 기습" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/O/0.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/O/0.png" alt="카샤">
+          <span class="card-tag">모험가</span>
+          <h3>카샤</h3>
+          <div class="character-role">그레이반 자유령 · 남 · 24세</div>
+          <p class="card-text">리아와 함께 의뢰를 수행하는 생존형 모험가.</p>
+          <div class="character-meta">코드: O/0</div>
+        </article>
+
+        <article class="character-card" onclick="openCharacterModal(this)" data-name="발칸" data-tag="기사단 기사" data-role="아르테리아 왕국 · 남 · 21세" data-desc="성실하지만 평민을 무시하는 기사. 아르테리아 기사단 소속의 젊은 기사로 메이를 존경하며 좋아한다. 단순하지만 정의감이 강하다." data-appearance="노란 머리, 파란 눈동자, 튼튼한 체격, 은색 기사 갑옷과 큰 방패" data-ability="방패술, 검술, 마력강화, 돌진기, 동료 보호" data-image="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/O/1.png">
+          <img class="character-image" src="https://pub-4d62d00381ec45e3879db448355aafe6.r2.dev/O/1.png" alt="발칸">
+          <span class="card-tag">기사단 기사</span>
+          <h3>발칸</h3>
+          <div class="character-role">아르테리아 왕국 · 남 · 21세</div>
+          <p class="card-text">메이를 존경하는 아르테리아 기사단의 젊은 기사.</p>
+          <div class="character-meta">코드: O/1</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="magic">
+      <div class="section-header center">
+        <div class="section-kicker">Power System</div>
+        <h2>마력과 치트급 능력</h2>
+        <p>에르디아의 일반적인 힘은 마력이지만, 나의 힘은 이세계의 법칙을 벗어난 특수한 능력입니다.</p>
+      </div>
+
+      <div class="grid magic-grid">
+        <article class="magic-card">
+          <div class="card-icon">✦</div>
+          <h3>마법</h3>
+          <p class="card-text">마력을 속성으로 변환해 불, 얼음, 자연, 어둠, 신성 계열의 현상을 일으키는 기술입니다.</p>
+        </article>
+
+        <article class="magic-card">
+          <div class="card-icon">⚔</div>
+          <h3>검술 강화</h3>
+          <p class="card-text">검과 몸에 마력을 둘러 공격력, 방어력, 속도, 반응력을 끌어올리는 전투 방식입니다.</p>
+        </article>
+
+        <article class="magic-card">
+          <div class="card-icon">☄</div>
+          <h3>능력 강화</h3>
+          <p class="card-text">자신에게 마력을 부여해 신체 능력, 감각, 특수 기술을 강화하는 방식입니다.</p>
+        </article>
+
+        <article class="magic-card">
+          <div class="card-icon">👁</div>
+          <h3>지배의 마안</h3>
+          <p class="card-text">마왕 루멜리아가 사용하는 권능. 상대의 의지와 마력을 압도하는 마족의 힘입니다.</p>
+        </article>
+
+        <article class="magic-card">
+          <div class="card-icon">💎</div>
+          <h3>보석마법</h3>
+          <p class="card-text">비올레타가 다루는 희귀 마법. 보석과 마도구, 정보 거래와 결합해 강력한 영향력을 가집니다.</p>
+        </article>
+
+        <article class="magic-card">
+          <div class="card-icon">∞</div>
+          <h3>치트급 능력</h3>
+          <p class="card-text">루미나가 나에게 부여한 이세계 법칙 밖의 힘. 모험, 하렘, 선택지에 따라 다양하게 활용됩니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="goal">
+      <div class="section-header center">
+        <div class="section-kicker">Main Goal</div>
+        <h2>나의 목표</h2>
+      </div>
+      <article class="goal-card">
+        <p>
+          나는 한국에서 평범하게 살던 중 갑자기 나타난 빛에 휩쓸려 에르디아 대륙으로 전이된다.
+          처음에는 자신이 왜 이세계로 오게 되었는지 알 수 없다.
+        </p>
+        <p>
+          다만 여신 루미나에게 받은 치트급 능력을 이용해 모험을 떠나거나, 여러 인물들과 관계를 맺거나,
+          에르디아 대륙의 사건에 휘말리며 자신만의 이야기를 만들어가게 된다.
+        </p>
+      </article>
+    </section>
+
+    <section id="start" class="story-start">
+      <div class="section-header center">
+        <div class="section-kicker">Story Begins</div>
+        <h2>빛에 휩쓸려 도착한 이세계</h2>
+      </div>
+      <p>
+        현대 한국에서 평범하게 살아가던 나는 어느 날 갑자기 나타난 빛에 휩쓸려
+        에르디아 대륙의 아르테리아 왕국에 떨어진다.
+        낯선 세계, 검과 마법, 몬스터와 마족, 그리고 여신이 남긴 치트급 능력.
+        이곳에서 나는 모험가가 될 수도, 왕국의 사건에 휘말릴 수도, 혹은 수많은 인물들과 특별한 관계를 쌓아갈 수도 있다.
+      </p>
+      <div class="button-group">
+        <a href="#top" class="btn btn-primary">처음으로</a>
+        <a href="#characters" class="btn btn-secondary">인물 다시 보기</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="characterModal" onclick="closeCharacterModal(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCharacterModal(event)">×</button>
+      <div class="modal-content">
+        <img class="modal-image" id="modalImage" src="" alt="캐릭터 이미지">
+        <div>
+          <span class="modal-tag" id="modalTag"></span>
+          <h2 class="modal-title" id="modalName"></h2>
+          <div class="modal-role" id="modalRole"></div>
+          <p class="modal-desc" id="modalDesc"></p>
+          <div class="modal-info">
+            <div><strong>외형</strong><br><span id="modalAppearance"></span></div>
+            <div><strong>마법/능력</strong><br><span id="modalAbility"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCharacterModal(card) {
+      const modal = document.getElementById('characterModal');
+      const modalImage = document.getElementById('modalImage');
+      modalImage.src = card.dataset.image;
+      modalImage.onerror = function () {
+        this.src = 'https://placehold.co/600x800/1b1424/e0b66d?text=' + encodeURIComponent(card.dataset.name);
+      };
+      document.getElementById('modalTag').textContent = card.dataset.tag;
+      document.getElementById('modalName').textContent = card.dataset.name;
+      document.getElementById('modalRole').textContent = card.dataset.role;
+      document.getElementById('modalDesc').textContent = card.dataset.desc;
+      document.getElementById('modalAppearance').textContent = card.dataset.appearance;
+      document.getElementById('modalAbility').textContent = card.dataset.ability;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCharacterModal(event) {
+      const modal = document.getElementById('characterModal');
+      if (event.target.id === 'characterModal' || event.target.classList.contains('modal-close')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        document.getElementById('characterModal').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <footer>
+    © 2026 Erdia Continent Archive. 이세계 세계관 소개 페이지.
+  </footer>
+</body>
+</html>
